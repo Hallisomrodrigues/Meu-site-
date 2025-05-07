@@ -51,55 +51,151 @@
             <img src="https://raw.githubusercontent.com/Hallisomrodrigues/Meu-site-/main/airpodsmaxbranco.jpeg">
             <h2>AIR PODS MAX</h2>
             <div class="preco">R$ 179,90</div>
-        </div>
+            </div>
 
-        <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Finalizar Pedido</title>
+  <title>Carrinho de Compras</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .titulo {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .produto {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+
+    .produto h3 {
+      font-size: 18px;
+    }
+
+    .produto p {
+      font-size: 16px;
+    }
+
+    .valor-total {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 20px;
+    }
+
     .botao-finalizar {
+      display: block;
+      width: 100%;
       background-color: #28a745;
       color: white;
-      padding: 12px 24px;
-      font-size: 16px;
+      padding: 12px;
+      font-size: 18px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      margin-top: 20px;
     }
 
     .botao-finalizar:hover {
       background-color: #218838;
     }
+
+    .botao-voltar {
+      display: inline-block;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .botao-voltar:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Botão de Finalizar Pedido -->
+  <div class="titulo">Carrinho de Compras</div>
+
+  <!-- Produtos no Carrinho -->
+  <div id="carrinho">
+    <!-- Produtos serão inseridos aqui via JavaScript -->
+  </div>
+
+  <!-- Valor Total -->
+  <div class="valor-total" id="valorTotal">Total: R$ 0,00</div>
+
+  <!-- Botões -->
   <button class="botao-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+  <button class="botao-voltar" onclick="window.location.href='/index.html'">Voltar à Loja</button>
 
   <script>
-    function finalizarPedido() {
-      // Simula salvar o pedido no backend ou localStorage
-      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-      console.log("Pedido finalizado:", carrinho);
+    // Simulação de produtos no carrinho (poderia vir de localStorage ou de uma API)
+    const produtos = [
+      { id: 1, nome: "Produto 1", preco: 50.00, quantidade: 2 },
+      { id: 2, nome: "Produto 2", preco: 30.00, quantidade: 1 },
+      { id: 3, nome: "Produto 3", preco: 20.00, quantidade: 3 }
+    ];
 
-      // Aqui você enviaria o pedido para o backend com fetch() ou AJAX se necessário
-      // fetch('/api/salvar-pedido', { method: 'POST', body: JSON.stringify(carrinho) })
+    // Função para exibir os produtos no carrinho
+    function exibirCarrinho() {
+      const carrinhoElement = document.getElementById("carrinho");
+      carrinhoElement.innerHTML = ''; // Limpa o carrinho antes de exibir
 
-      // Redireciona para a página de pagamento via Pix
-      window.location.href = "/pagamento-pix.html"; // ou link do provedor de pagamento
+      let total = 0;
+      produtos.forEach(produto => {
+        // Criar elementos para cada produto
+        const produtoElement = document.createElement('div');
+        produtoElement.classList.add('produto');
+        produtoElement.innerHTML = `
+          <h3>${produto.nome}</h3>
+          <p>R$ ${produto.preco.toFixed(2)} x ${produto.quantidade}</p>
+          <p><strong>R$ ${(produto.preco * produto.quantidade).toFixed(2)}</strong></p>
+        `;
+
+        // Adicionar o produto ao carrinho
+        carrinhoElement.appendChild(produtoElement);
+
+        // Atualiza o total
+        total += produto.preco * produto.quantidade;
+      });
+
+      // Exibe o valor total
+      document.getElementById("valorTotal").innerText = `Total: R$ ${total.toFixed(2)}`;
     }
+
+    // Função de finalização de pedido
+    function finalizarPedido() {
+      alert("Pedido finalizado! Você será redirecionado para a página de pagamento.");
+      // Redireciona para a página de pagamento (exemplo de redirecionamento)
+      window.location.href = "/pagamento-pix.html";
+    }
+
+    // Inicializa a página carregando os produtos
+    window.onload = exibirCarrinho;
   </script>
 
 </body>
 </html>
+        
 
-
-        <!-- Adicione mais produtos aqui copiando a div acima -->
-    </div>
 
 </body>
 </html>
