@@ -53,6 +53,50 @@
             <div class="preco">R$ 179,90</div>
         </div>
 
+        <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Finalizar Pedido</title>
+  <style>
+    .botao-finalizar {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botao-finalizar:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão de Finalizar Pedido -->
+  <button class="botao-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+
+  <script>
+    function finalizarPedido() {
+      // Simula salvar o pedido no backend ou localStorage
+      const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      console.log("Pedido finalizado:", carrinho);
+
+      // Aqui você enviaria o pedido para o backend com fetch() ou AJAX se necessário
+      // fetch('/api/salvar-pedido', { method: 'POST', body: JSON.stringify(carrinho) })
+
+      // Redireciona para a página de pagamento via Pix
+      window.location.href = "/pagamento-pix.html"; // ou link do provedor de pagamento
+    }
+  </script>
+
+</body>
+</html>
+
 
         <!-- Adicione mais produtos aqui copiando a div acima -->
     </div>
