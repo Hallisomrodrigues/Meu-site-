@@ -1,201 +1,95 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Catálogo de Vendas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Produtos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 20px;
+        }
+        h1 {
+            text-align: center;
         }
         .catalogo {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
+            margin-top: 20px;
         }
         .produto {
-            background-color: white;
+            width: 200px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            width: 250px;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         .produto img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
-            border-radius: 5px;
         }
         .produto h2 {
             font-size: 18px;
-            margin: 10px 0 5px;
-        }
-        .produto p {
-            font-size: 14px;
-            color: #555;
+            margin: 10px 0;
         }
         .preco {
             font-size: 16px;
             color: green;
             font-weight: bold;
-            margin-top: 10px;
+        }
+        .botao-carrinho {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 0 0 8px 8px;
+        }
+        .botao-carrinho:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
 
-    <h1>Catálogo de Produtos</h1>
-    <div class="catalogo">
-        <div class="produto">
-            <img src="https://raw.githubusercontent.com/Hallisomrodrigues/Meu-site-/main/airpodsmaxbranco.jpeg">
-            <h2>AIR PODS MAX</h2>
-            <div class="preco">R$ 179,90</div>
-            </div>
+<h1>Catálogo de Produtos</h1>
 
+<div class="catalogo">
+    <!-- Produto 1 -->
+    <div class="produto">
+        <img src="https://raw.githubusercontent.com/Hallisomrodrigues/Meu-site-/main/airpodsmaxbranco.jpeg" alt="AIR PODS MAX">
+        <h2>AIR PODS MAX</h2>
+        <div class="preco">R$ 179,90</div>
+        <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Carrinho de Compras</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f4f4f4;
-    }
+    <!-- Produto 2 -->
+    <div class="produto">
+        <img src="https://raw.githubusercontent.com/Hallisomrodrigues/Meu-site-/main/airpodsmaxbranco.jpeg" alt="AIR PODS MAX">
+        <h2>AIR PODS MAX</h2>
+        <div class="preco">R$ 179,90</div>
+        <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
 
-    .titulo {
-      font-size: 28px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+    <!-- Produto 3 -->
+    <div class="produto">
+        <img src="https://raw.githubusercontent.com/Hallisomrodrigues/Meu-site-/main/airpodsmaxbranco.jpeg" alt="AIR PODS MAX">
+        <h2>AIR PODS MAX</h2>
+        <div class="preco">R$ 179,90</div>
+        <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
 
-    .produto {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
-
-    .produto h3 {
-      font-size: 18px;
-    }
-
-    .produto p {
-      font-size: 16px;
-    }
-
-    .valor-total {
-      font-size: 20px;
-      font-weight: bold;
-      text-align: right;
-      margin-top: 20px;
-    }
-
-    .botao-finalizar {
-      display: block;
-      width: 100%;
-      background-color: #28a745;
-      color: white;
-      padding: 12px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .botao-finalizar:hover {
-      background-color: #218838;
-    }
-
-    .botao-voltar {
-      display: inline-block;
-      width: 100%;
-      background-color: #007bff;
-      color: white;
-      padding: 12px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .botao-voltar:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="titulo">Carrinho de Compras</div>
-
-  <!-- Produtos no Carrinho -->
-  <div id="carrinho">
-    <!-- Produtos serão inseridos aqui via JavaScript -->
-  </div>
-
-  <!-- Valor Total -->
-  <div class="valor-total" id="valorTotal">Total: R$ 0,00</div>
-
-  <!-- Botões -->
-  <button class="botao-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
-  <button class="botao-voltar" onclick="window.location.href='/index.html'">Voltar à Loja</button>
-
-  <script>
-    // Simulação de produtos no carrinho (poderia vir de localStorage ou de uma API)
-    const produtos = [
-      { id: 1, nome: "Produto 1", preco: 50.00, quantidade: 2 },
-      { id: 2, nome: "Produto 2", preco: 30.00, quantidade: 1 },
-      { id: 3, nome: "Produto 3", preco: 20.00, quantidade: 3 }
-    ];
-
-    // Função para exibir os produtos no carrinho
-    function exibirCarrinho() {
-      const carrinhoElement = document.getElementById("carrinho");
-      carrinhoElement.innerHTML = ''; // Limpa o carrinho antes de exibir
-
-      let total = 0;
-      produtos.forEach(produto => {
-        // Criar elementos para cada produto
-        const produtoElement = document.createElement('div');
-        produtoElement.classList.add('produto');
-        produtoElement.innerHTML = `
-          <h3>${produto.nome}</h3>
-          <p>R$ ${produto.preco.toFixed(2)} x ${produto.quantidade}</p>
-          <p><strong>R$ ${(produto.preco * produto.quantidade).toFixed(2)}</strong></p>
-        `;
-
-        // Adicionar o produto ao carrinho
-        carrinhoElement.appendChild(produtoElement);
-
-        // Atualiza o total
-        total += produto.preco * produto.quantidade;
-      });
-
-      // Exibe o valor total
-      document.getElementById("valorTotal").innerText = `Total: R$ ${total.toFixed(2)}`;
-    }
-
-    // Função de finalização de pedido
-    function finalizarPedido() {
-      alert("Pedido finalizado! Você será redirecionado para a página de pagamento.");
-      // Redireciona para a página de pagamento (exemplo de redirecionamento)
-      window.location.href = "/pagamento-pix.html";
-    }
-
-    // Inicializa a página carregando os produtos
-    window.onload = exibirCarrinho;
-  </script>
-
-</body>
-</html>
-        
-
+    <!-- Produto 4 -->
+    <div class="produto">
+        <img src="https://raw.githubusercontent.com/Hallisomrodrigues/Meu-site-/main/airpodsmaxbranco.jpeg" alt="AIR PODS MAX">
+        <h2>AIR PODS MAX</h2>
+        <div class="preco">R$ 179,90</div>
+        <button class="botao-carrinho">Adicionar ao Carrinho</button>
+    </div>
+</div>
 
 </body>
 </html>
